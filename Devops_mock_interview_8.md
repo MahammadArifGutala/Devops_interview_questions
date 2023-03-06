@@ -8,6 +8,7 @@ Unix & Shell
 7. what is the use of shift command?
 10. difference between break and exit 0 in shell script?
 11. delete files which are older than 10 days?
+---> find ./my_dir -mtime +10 -type f -delete
 12. delete empty files in a given directory?
 
 
