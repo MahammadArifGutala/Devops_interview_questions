@@ -2,15 +2,49 @@ Unix & Shell
 ---
 1. Lets say you have a script that will take more than a day to execute, in this case how do you run that script. Also as user you might not able to keep machine in interactive mode for longer period.
 3. is it possible to store a commands output, either success or failure to the same file?
-4. what is debug mode in shell script?
-5. set of commands executed at multiples places in shell script, want to standardize that is it possible something like to define function?
-6. In shell script can we supply parameters to functions?
-7. what is the use of shift command?
-10. difference between break and exit 0 in shell script?
-11. delete files which are older than 10 days?
----> find ./my_dir -mtime +10 -type f -delete
-12. delete empty files in a given directory?
+----> Yes, i'm trying to do shell command then save the output into variable using shell script. So i use backticks like this :
 
+out=`ls -l`
+print $out
+
+4. what is debug mode in shell script?
+----->>>
+#!/bin/bash
+clear
+ 
+# turn on debug mode
+set -x
+for f in *
+do
+   file $f
+done
+# turn OFF debug mode
+set +x
+ls
+# more commands
+
+5. set of commands executed at multiples places in shell script, want to standardize that is it possible something like to define function?
+  ------->>>>> Combining the commands – We can use “;“, “&&“, or “||“ to concatenate our commands, 
+6. In shell script can we supply parameters to functions? 
+             ---> Yes, 
+function_name()
+{
+ echo “hello $1”
+ return 1
+}
+Running the function with a single parameter will echo the value.
+$ function_name ram
+hello ram
+
+7. what is the use of shift command? 
+         ---> The shift command is mostly used when the number of positions that parameters should be shifted to the left. This value can be any non-negative integer. If n is zero (0), no parameter shift will be performed. The default value of n is 1.
+
+10. difference between break and exit 0 in shell script?
+        ---> break is a keyword, which causes an immediate exit from the switch or loop ( for , while or do ).   0 exit status means the command was successful without any errors.
+11. delete files which are older than 10 days?
+                                      ---> find ./my_dir -mtime +10 -type f -delete
+12. delete empty files in a given directory?
+                                      ---> find .-type f -empty -delete 
 
 
 Monitoring 
